@@ -1,8 +1,65 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
-import { Card, Title, Paragraph, Cover, Badge, Button} from 'react-native-paper';
+import styled from 'styled-components/native';
+import { Card, Badge } from 'react-native-paper';
 
-export const ProductInfo = ({ search, product = {} }) => {
+const ProductCard = styled(Card)`
+    background-color: #fff;
+
+`;
+
+const CardCover = styled(Card.Cover)`
+    margin: 5px;
+    background-color: #fff;
+`;
+
+const Title = styled.Text`
+    color: #007AFF; 
+    fontWeight: bold;
+    font-size: 24px;
+`;
+
+const SubTitle = styled.Text`
+    color: #007AFF;
+    font-weight: bold;
+    font-size: 16px;
+`;
+
+const InfoText = styled.Text`
+    font-size: 14px;
+    color: #007AFF95;
+`;
+
+const SupplierBadge = styled(Badge)`
+    background-color: orange;
+    margin-right: 5px;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 12px;
+`;
+const InfoBadge = styled(Badge)`
+    background-color: #007AFF;
+    margin: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 12px;
+`;
+
+const InfoView = styled.View`
+    padding: 15px;
+    color: #007AFF;
+`;
+
+const TopBadgeView = styled.View`
+    flex-direction: row;
+    justify-content: flex-end;
+`;
+
+const BottomBadgeView = styled.View`
+    flex-direction: row;
+    justify-content: center;
+`;
+
+export const ProductInfoCard = ({ search, product = {} }) => {
     const {
         objectId = 1,
         item = 'ZIP-X',
@@ -15,43 +72,29 @@ export const ProductInfo = ({ search, product = {} }) => {
         price = 88.82,
         stock_received = 550,
         stock_processed = 254,
-        items_processed = 273,
+        items_processed = 343,
         avg_weight = (stock_processed / items_processed).toFixed(2),
         avg_price = (avg_weight * price).toFixed(2)
     } = product;
 
     return (
         <>
-            <Card elevation={5} style={styles.card}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-end'}}>
-                        <Badge style={{ backgroundColor: 'orange' }}>{supplier} {supplier_code}</Badge>
-                        <Badge style={styles.badge}>Stock: {stock_received - stock_processed}kg</Badge>
-                        <Badge style={styles.badge}>Avg Price: R {avg_price}</Badge>
-                    </View>
-                    <View style={styles.content}>
-                        <Card.Cover key={objectId} style={styles.cover} source={{ uri: photos[0] }} alt='none' />
-                        <View style={styles.info}>
-                            <Title style={styles.title}>{item}</Title>    
-                            <Text style={styles.subheading}>{description}</Text>
-                            <Text style={styles.paragraph}>Price: R {price} /kg  | Avg Item Weight: {avg_weight}kg</Text>
-                        </View>
-                    </View>
-                    {/* <Card.Actions style={styles.actions}>
-                        <Button style={styles.button} color='#007AFF' onPress={() => { console.log('Process Button Pressed') }}>Process</Button>
-                        <Button style={styles.button} color='#007AFF' onPress={() => { console.log('Edit Button Pressed') }}>Edit</Button>
-                    </Card.Actions> */}
-            </Card>
+            <ProductCard elevation={5}>
+                <TopBadgeView>
+                    <SupplierBadge>{supplier} {supplier_code}</SupplierBadge>
+                </TopBadgeView>
+                
+                    <CardCover key={objectId} source={{ uri: photos[0] }} alt='image' />
+                    <InfoView>
+                        <Title>{item}</Title>    
+                        <SubTitle>{description}</SubTitle>
+                        <InfoText>Price: R {price} /kg  | Avg Item Weight: {avg_weight}kg</InfoText>
+                    </InfoView>
+                    <BottomBadgeView>
+                        <InfoBadge>Available Stock: {stock_received - stock_processed}kg</InfoBadge>
+                        <InfoBadge>Avg Price: R {avg_price}</InfoBadge>
+                    </BottomBadgeView>
+            </ProductCard>
         </>
     )
 }
-
-const styles = StyleSheet.create({
-    card: { backgroundColor: 'white'},
-    cover: { margin: 5, backgroundColor: 'white'},
-    title: { color: '#007AFF', fontWeight: 'bold'},
-    subheading: { color: '#007AFF', fontWeight: 'bold', fontSize: 16},
-    paragraph: { fontSize: 14, color: '#007AFF95'},
-    button: { marginLeft: 8, width: 100, backgroundColor: '#007AFF20' },
-    info: { padding: 15, color: '#007AFF'},
-    badge: { marginTop: 5, marginRight: 5, color: '#fff', backgroundColor: '#007AFF', fontWeight: 'bold', fontSize: 10 }
-})

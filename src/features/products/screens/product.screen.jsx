@@ -1,8 +1,20 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import { StatusBar, StyleSheet, View, SafeAreaView, FlatList } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-import { ProductInfo } from "../components/product-info-card.component";
+import { ProductInfoCard } from "../components/product-info-card.component";
+
+const SearchContainer = styled.View`
+   padding: 12px;
+   background-color: #007AFF;
+`;
+
+const ListContainer = styled.View`
+  flex: 1;
+  background-color: #eee;
+  padding: 12px;
+`;
 
 export const ProductsScreen = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
@@ -11,16 +23,16 @@ export const ProductsScreen = () => {
   return (
     <>
         <SafeAreaView style={styles.container}>
-            <View style={styles.search}>
+            <SearchContainer>
                 <Searchbar 
                     placeholder="Search"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
                 />
-            </View>
-            <View style={styles.list}>
-                <ProductInfo search={searchQuery}/>
-            </View>
+            </SearchContainer>
+            <ListContainer>
+                <ProductInfoCard search={searchQuery}/>
+            </ListContainer>
         </SafeAreaView>
     </>
   );
@@ -28,12 +40,10 @@ export const ProductsScreen = () => {
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1,
-    backgroundColor: '#eee',
-    padding: 16,
+    
   },
   search: {
-    padding: 16,
+   
   },
   container: {
     flex: 1,
