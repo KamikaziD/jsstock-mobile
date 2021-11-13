@@ -1,48 +1,44 @@
-import React from 'react';
-import { StatusBar, StyleSheet, View, SafeAreaView, FlatList } from 'react-native';
-import { Searchbar } from 'react-native-paper';
+import React, { useContext } from 'react'
+import { Searchbar } from 'react-native-paper'
+import { Spacer } from '../../../components/spacer/spacer.component'
+import { SafeArea } from '../../../components/utility/safe-area.component';
+import {
+  SearchContainer,
+  ProductList
+} from './product.styles'
+import { ProductInfoCard } from "../components/product-info-card.component"
 
-import { ProductInfo } from "../components/product-info.component";
+import { ProductsContext } from '../../../services/products/products.context';
 
 export const ProductsScreen = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
     const onChangeSearch = query => setSearchQuery(query);
-
+    const { isLoading, products, error } = useContext(ProductsContext)
+    console.log(products);
   return (
     <>
-        <SafeAreaView style={styles.safearea}>
-            <View style={styles.searchbar}>
+        <SafeArea>
+            <SearchContainer>
                 <Searchbar 
                     placeholder="Search"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
                 />
-            </View>
-            <View style={styles.container}>
-                <ProductInfo search={searchQuery}/>
-                <ProductInfo search={searchQuery}/>
-                <ProductInfo search={searchQuery}/>
-            </View>
-        </SafeAreaView>
+            </SearchContainer>
+            <ProductList 
+              data={products}
+              renderItem={({ item }) => {
+                return (
+                  <Spacer position='bottom' size='large'>
+                    <ProductInfoCard product={item}  search={searchQuery} />
+                  </Spacer>
+                )}
+              }
+              keyExtractor={(products) => products.objectId}
+              
+            />
+                
+        </SafeArea>
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  searchbar: {
-    flex: 1,
-    backgroundColor: '#007AFF',
-    maxHeight: "80px",
-    padding: "15px"
-  },
-  safearea: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  }
-});
+};
