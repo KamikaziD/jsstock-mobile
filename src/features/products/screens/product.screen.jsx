@@ -1,28 +1,23 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import { StatusBar, StyleSheet, View, SafeAreaView, FlatList } from 'react-native';
-import { Searchbar } from 'react-native-paper';
+import React, { useContext } from 'react'
+import { Searchbar } from 'react-native-paper'
+import { Spacer } from '../../../components/spacer/spacer.component'
+import { SafeArea } from '../../../components/utility/safe-area.component';
+import {
+  SearchContainer,
+  ProductList
+} from './product.styles'
+import { ProductInfoCard } from "../components/product-info-card.component"
 
-import { ProductInfoCard } from "../components/product-info-card.component";
-
-const SearchContainer = styled.View`
-   padding: 12px;
-   background-color: #007AFF;
-`;
-
-const ListContainer = styled.View`
-  flex: 1;
-  background-color: #eee;
-  padding: 12px;
-`;
+import { ProductsContext } from '../../../services/products/products.context';
 
 export const ProductsScreen = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
     const onChangeSearch = query => setSearchQuery(query);
-
+    const { isLoading, products, error } = useContext(ProductsContext)
+    console.log(products);
   return (
     <>
-        <SafeAreaView style={styles.container}>
+        <SafeArea>
             <SearchContainer>
                 <Searchbar 
                     placeholder="Search"
@@ -30,23 +25,20 @@ export const ProductsScreen = () => {
                     value={searchQuery}
                 />
             </SearchContainer>
-            <ListContainer>
-                <ProductInfoCard search={searchQuery}/>
-            </ListContainer>
-        </SafeAreaView>
+            <ProductList 
+              data={products}
+              renderItem={({ item }) => {
+                return (
+                  <Spacer position='bottom' size='large'>
+                    <ProductInfoCard product={item}  search={searchQuery} />
+                  </Spacer>
+                )}
+              }
+              keyExtractor={(products) => products.objectId}
+              
+            />
+                
+        </SafeArea>
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  list: {
-    
-  },
-  search: {
-   
-  },
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  }
-});
+};
