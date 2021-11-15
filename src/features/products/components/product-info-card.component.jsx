@@ -42,7 +42,7 @@ export const ProductInfoCard = ({ search, product = {} }) => {
                     <SupplierBadge>{barcode}</SupplierBadge>
                 </TopBadgeView>
                 
-                    <CardCover key={objectId} source={{ uri: photos[0] }} alt='image' />
+                    <CardCover key={objectId} source={{ uri: photos }} alt='image' />
                     <InfoView>
                         <Title>{item}</Title>    
                         <SubTitle>{description}</SubTitle>

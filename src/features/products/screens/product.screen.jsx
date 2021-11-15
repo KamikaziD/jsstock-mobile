@@ -14,7 +14,7 @@ export const ProductsScreen = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
     const onChangeSearch = query => setSearchQuery(query);
     const { isLoading, products, error } = useContext(ProductsContext)
-    console.log(products);
+    
   return (
     <>
         <SafeArea>

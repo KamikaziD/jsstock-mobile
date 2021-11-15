@@ -7,9 +7,7 @@
             "item": "ZIP-X",
             "description": "Adult Ski Jackets Extra",
             "barcode": 121001,
-            "photos": [
-                "https://www.telegraph.co.uk/content/dam/Travel/ski/Gear/ski-jackets-19-Schoffel-Ski-Jacket-Sierra-Nevada2-%C3%BA590.jpg"
-            ],
+            "photos": "https://www.telegraph.co.uk/content/dam/Travel/ski/Gear/ski-jackets-19-Schoffel-Ski-Jacket-Sierra-Nevada2-%C3%BA590.jpg",
             "supplier": "Gebotex",
             "supplier_code": 12,
             "price": 88.82,
@@ -22,9 +20,7 @@
             "item": "CHZIP-X",
             "description": "Children Ski Jackets Extra",
             "barcode": 121002,
-            "photos": [
-                "https://offers.kd2.org/pics/28/48/284858b5505b16ab0236e89fddffbff5cbb9160a.jpg"
-            ],
+            "photos": "https://offers.kd2.org/pics/28/48/284858b5505b16ab0236e89fddffbff5cbb9160a.jpg",
             "supplier": "Gebotex",
             "supplier_code": 12,
             "price": 109.32,
@@ -37,9 +33,7 @@
             "item": "MOC",
             "description": "Mens Overcoats",
             "barcode": 121003,
-            "photos": [
-                "https://media.cnn.com/api/v1/images/stellar/prod/211102141206-faux-guess-mens-faux-shearling-overcoat.jpg?q=w_1700,h_958,x_0,y_0,c_fill"
-            ],
+            "photos": "https://media.cnn.com/api/v1/images/stellar/prod/211102141206-faux-guess-mens-faux-shearling-overcoat.jpg?q=w_1700,h_958,x_0,y_0,c_fill",
             "supplier": "Gebotex",
             "supplier_code": 12,
             "price": 49.29,
@@ -52,9 +46,7 @@
             "item": "LOC",
             "description": "Ladies Overcoats",
             "barcode": 121004,
-            "photos": [
-                "https://s.abcnews.com/images/GMA/nordstrom-ht-er-190307_hpMain_12x5_608.jpg"
-            ],
+            "photos": "https://s.abcnews.com/images/GMA/nordstrom-ht-er-190307_hpMain_12x5_608.jpg",
             "supplier": "Gebotex",
             "supplier_code": 12,
             "price": 43.88,
@@ -67,9 +59,7 @@
             "item": "JOGSW",
             "description": "Adult hooded Caps",
             "barcode": 121005,
-            "photos": [
-                "https://i5.walmartimages.com/asr/af5fd25e-501a-42a2-97da-23e58eabf878_1.d80c9f4bfc58e53de088e316c8960c74.jpeg"
-            ],
+            "photos": "https://i5.walmartimages.com/asr/af5fd25e-501a-42a2-97da-23e58eabf878_1.d80c9f4bfc58e53de088e316c8960c74.jpeg",
             "supplier": "Gebotex",
             "supplier_code": 12,
             "price": 35.16,
