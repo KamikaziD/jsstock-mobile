@@ -1,10 +1,9 @@
-import styled from 'styled-components/native';
-import { StatusBar, SafeAreaView, FlatList } from 'react-native';
-
+import styled from "styled-components/native";
+import { StatusBar, SafeAreaView, FlatList } from "react-native";
 
 export const SearchContainer = styled.View`
-   padding: ${(props) => props.theme.space[2]};
-   background-color: ${(props) => props.theme.colors.brand.primary};
+  padding: ${(props) => props.theme.space[2]};
+  background-color: ${(props) => props.theme.colors.brand.primary};
 `;
 
 export const ListContainer = styled.View`
@@ -14,7 +13,7 @@ export const ListContainer = styled.View`
 `;
 
 export const ProductList = styled(FlatList).attrs({
-    contentContainerStyle: {
-        padding: 10
-    }
+  contentContainerStyle: {
+    padding: 10,
+  },
 })``;

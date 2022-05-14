@@ -14,6 +14,7 @@ import {
 import { theme } from "./src/infrastructure/theme";
 import { SafeArea } from "./src/components/utility/safe-area.component";
 import { ProductsScreen } from "./src/features/products/screens/products.screen";
+import { StatsScreen as Stats } from "./src/features/stats/screens/stats.screen";
 
 import { ProductsContextProvider } from "./src/services/products/products.context";
 
@@ -57,9 +58,11 @@ const SettingsScreen = () => {
 
 const StatsScreen = () => {
   return (
-    <SafeArea>
-      <Text>Stats Screen</Text>
-    </SafeArea>
+    <Stats />
+    // <SafeArea>
+    //   <Text>Stats Screen</Text>
+    //   <Text>Isn't this cool???</Text>
+    // </SafeArea>
   );
 };
 
